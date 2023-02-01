@@ -50,7 +50,7 @@ async function fetch({ apiKey, auth, path, method, body }) {
     throw new Error('Missing Printful API key')
   }
 
-  const apiAuth = auth ? auth : Buffer.from(apiKey).toString('base64')
+  const apiAuth = auth ? auth : apiKey
   const url = PrintfulURL + path
 
   const limiter = getLimiter(apiAuth)
@@ -58,7 +58,7 @@ async function fetch({ apiKey, auth, path, method, body }) {
   const opts = {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     credentials: 'include',
     method

@@ -21,9 +21,11 @@ const log = getLogger('logic.printful.webhook')
  */
 const registerPrintfulWebhook = async (shopId, shopConfig, backendUrl) => {
   const apiKey = shopConfig.printful
+  log.info(`${apiKey}`)
 
   const secret = Math.random().toString(36).substring(2)
   const webhookURL = `${backendUrl}/printful/webhooks/${shopId}/${secret}`
+  log.info(`Printful Webhook URL ${webhookURL}`, webhookURL)
   const registerData = {
     url: webhookURL,
     types: Object.values(PrintfulWebhookEvents)

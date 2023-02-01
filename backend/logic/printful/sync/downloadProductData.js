@@ -28,7 +28,8 @@ async function downloadProductData({
   smartFetch,
   forceRefetchIds
 }) {
-  const apiAuth = Buffer.from(printfulApi).toString('base64')
+  // const apiAuth = Buffer.from(printfulApi).toString('base64')
+  const apiAuth = printfulApi
 
   fs.mkdirSync(`${OutputDir}/data-printful`, { recursive: true })
 

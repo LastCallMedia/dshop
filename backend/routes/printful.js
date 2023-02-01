@@ -84,9 +84,12 @@ module.exports = function (router) {
     const { type, data } = req.body
     const { shopId, secret } = req.params
 
+
     try {
       const shop = await Shop.findOne({ where: { id: shopId } })
       const shopConfig = decryptConfig(shop.config)
+      log.info(`Shop Config`)
+      log.info(shopConfig)
       const storedSecret = get(shopConfig, 'printfulWebhookSecret')
 
       if (secret !== storedSecret) {

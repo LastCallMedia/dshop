@@ -52,7 +52,7 @@ module.exports = function (router) {
         shopId: req.shop.id
       }
     })
-    res.send(data.allPolicies)
+    res.send(data?.allPolicies)
   })
 
   router.delete('/shop/policies', authShop, async (req, res) => {

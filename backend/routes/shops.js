@@ -173,7 +173,7 @@ module.exports = function (router) {
           OutputDir,
           apiKey: printful,
           shopId: req.shop.id,
-          refreshImages: req.body.refreshImages ? true : false
+          refreshImages: !!req.body.refreshImages
         },
         { attempts: 1 }
       )

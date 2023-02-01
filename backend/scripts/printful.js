@@ -5,14 +5,14 @@ const fetch = require('node-fetch')
 
 const PrintfulApiKey = process.env.PRINTFUL
 
-const apiAuth = Buffer.from(PrintfulApiKey).toString('base64')
+const apiAuth = PrintfulApiKey
 const PrintfulURL = 'https://api.printful.com'
 
 async function createOrder() {
   const res = await fetch(`${PrintfulURL}/orders`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     credentials: 'include',
     method: 'POST',
@@ -42,7 +42,7 @@ async function confirmOrder(id) {
   const res = await fetch(`${PrintfulURL}/orders/${id}/confirm`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     credentials: 'include',
     method: 'POST'
@@ -55,7 +55,7 @@ async function getSyncProducts() {
   const res = await fetch(`${PrintfulURL}/sync/products?limit=100`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -67,7 +67,7 @@ async function getSyncProduct(id) {
   const res = await fetch(`${PrintfulURL}/sync/products/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -79,7 +79,7 @@ async function getSyncVariant(id) {
   const res = await fetch(`${PrintfulURL}/sync/variant/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -91,7 +91,7 @@ async function getPrintFiles(id) {
   const res = await fetch(`${PrintfulURL}/mockup-generator/printfiles/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -103,7 +103,7 @@ async function createMockupTask(id, data) {
   const res = await fetch(`${PrintfulURL}/mockup-generator/create-task/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'POST',
     body: JSON.stringify(data)
@@ -118,7 +118,7 @@ async function getTask(id) {
     {
       headers: {
         'content-type': 'application/json',
-        authorization: `Basic ${apiAuth}`
+        authorization: `Bearer ${apiAuth}`
       },
       method: 'GET'
     }
@@ -131,7 +131,7 @@ async function getFiles() {
   const res = await fetch(`${PrintfulURL}/files`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -143,7 +143,7 @@ async function getFile(id) {
   const res = await fetch(`${PrintfulURL}/files/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })
@@ -154,7 +154,7 @@ async function getMockTemplate(id) {
   const res = await fetch(`${PrintfulURL}/mockup-generator/templates/${id}`, {
     headers: {
       'content-type': 'application/json',
-      authorization: `Basic ${apiAuth}`
+      authorization: `Bearer ${apiAuth}`
     },
     method: 'GET'
   })

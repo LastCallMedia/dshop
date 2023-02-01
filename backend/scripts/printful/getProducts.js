@@ -7,6 +7,9 @@ async function getProducts({ apiAuth, OutputDir }) {
 
   const allProducts = []
 
+  console.log(apiAuth)
+  console.log(OutputDir)
+
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const json = await get(`/sync/products?limit=${limit}&offset=${offset}`, {

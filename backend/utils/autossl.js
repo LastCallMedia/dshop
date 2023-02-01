@@ -26,15 +26,15 @@ async function triggerAutoSSL(url, autoSSLHost) {
 
   for (;;) {
     try {
-      await getHTTPS({
-        host: url.hostname,
-        path: url.pathname,
-        port: url.port || 443,
-        servername: hostname,
-        headers: {
-          host: hostname
-        }
-      })
+      // await getHTTPS({
+      //   host: url.hostname,
+      //   path: url.pathname,
+      //   port: url.port || 443,
+      //   servername: hostname,
+      //   headers: {
+      //     host: hostname
+      //   }
+      // })
       success = true
       break
     } catch (err) {
