@@ -177,9 +177,9 @@ router.get('*', async (req, res, next) => {
   const authToken = await hostCache(req.hostname)
   const split = req.path.split('/')
 
-  if (!authToken && split.length <= 2) {
-    return next()
-  }
+  // if (!authToken && split.length <= 2) {
+  //   return next()
+  // }s
 
   /**
    * We're making some decisions on what source we're serving from here.

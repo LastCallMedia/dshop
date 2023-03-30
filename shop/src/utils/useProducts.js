@@ -33,6 +33,7 @@ function useProducts(opts = {}) {
           products = await get('/affiliate/products')
         } else {
           products = await getProducts(`${config.dataSrc}products.json`)
+          console.log(products)
         }
         if (config.inventory) {
           const { products: stockData } = await fetchProductStock(null, config)

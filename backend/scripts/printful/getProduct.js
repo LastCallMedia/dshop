@@ -15,7 +15,8 @@ async function getProduct({ apiAuth, OutputDir, id }) {
   if (productId && !fs.existsSync(productPath)) {
     const productJson = await get(`/products/${productId}`, { auth: apiAuth })
     const result = productJson.result
-    const sizeGuide = await getSizeGuide({ OutputDir, productId })
+    // const sizeGuide = await getSizeGuide({ OutputDir, productId })
+    const sizeGuide = undefined
     result.sizeGuide = sizeGuide
     fs.writeFileSync(productPath, JSON.stringify(result, null, 2))
 

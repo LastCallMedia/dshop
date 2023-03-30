@@ -32,6 +32,7 @@ const AdminProducts = () => {
   const history = useHistory()
 
   const sortedProducts = sortProducts(products, opts.sort)
+  console.log(products)
   const pagedProducts = sortedProducts.slice(start, end)
 
   const loading = productsLoading || collectionsLoading
